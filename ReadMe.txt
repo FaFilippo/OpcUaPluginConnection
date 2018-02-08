@@ -22,6 +22,6 @@ Example of the connection.
 	4 -> port number: 52524 for THCU
 	-----------------------------
 
-Select the port number for select witch server you want and the class take the monitor point from the server (in this case only the wind speed named like ws_windspd) and the Plugin save it in a Kafka topics named "PluginsKtopic", then the converter take the data (the data are MonitorPointDataToBuffer type) from the topic and convert it into IASValue and save it in another Kafka topic named BsdbCoreKTopic.
-
-The java class first initialized and start the loop of the converter, then start the plugin and create the connection only at this time create a OPC UA client and start collect data from the server.
+Select the port number for start a connection beetween one OPCUA server, this class collect monitor point from the server (in this case only the wind speed value named ws_windspd). 
+The Plugin save the monitor points in a Kafka topics named "PluginsKtopic", the Converter take the data from the Plugin topic and convert it into IASValue, after the conversion they are saved in another Kafka topic named BsdbCoreKTopic.
+This Prototype first start the converter loop then the Plugin, at this point start a client OPC UA and connect it to a server OPC UA, at this time it's possible take monitor points.
